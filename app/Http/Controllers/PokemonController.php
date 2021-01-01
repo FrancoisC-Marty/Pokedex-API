@@ -40,19 +40,24 @@ class PokemonController extends Controller
     }
 
     /**
-     * Get a category
+     * récupération d'un pokemon par son id
      *
-     * @param int $categoryId
+     * @param int $id
      * @return json
      */
-    public function item($id)
+    public function details($id)
     {
         $id = intval($id);
 
-          if ($id <= DB::table('pokemons')->max('numero') && $id > 0) {
+        // On vérifie si le pokemon demandé est bien dans la liste des 151 premiers
+          if ($id <= DB::table('pokemon')->max('numero') && $id > 0) {
+            // On récupère le pokemon voulu via son ID
             $pokemon = Pokemon::find($id);
+            // On récupère les differents types (la relation a été définie dans le model Pokemon)
+            $details = $pokemon->load(['types']);
+
             // On retourne l'info au format json avec le status code 200
-            return $this->sendJsonResponse($pokemon, 200);
+            return $this->sendJsonResponse($details, 200);
           }
           else {
               // fonction 404 prévue par Lumen

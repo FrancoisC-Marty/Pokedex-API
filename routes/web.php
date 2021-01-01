@@ -23,15 +23,15 @@ $router->get(
     '/types',
     [
         'uses' => 'PokemonController@type',
-        'as'   => 'pokemon-type'
+        'as'   => 'pokemon-types'
     ]
 );
 
 $router->get(
-    '/pokemon/[id]',
+    '/pokemon/{id}',
     [
-        'uses' => 'PokemonController@item',
-        'as'   => 'pokemon-item'
+        'uses' => 'PokemonController@details',
+        'as'   => 'pokemon-details'
     ]
 );
 

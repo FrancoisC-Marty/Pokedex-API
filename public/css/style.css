@@ -1,0 +1,228 @@
+html {
+  font-size: 16px;
+  font-family: 'Bree Serif', Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+
+body {
+  background-color: #C14040;
+  color: white;
+}
+
+.pokedex-container {
+  width: 97%;
+  justify-content: center;
+}
+
+.pokedex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 1.5rem;
+  margin: 1rem;
+}
+
+.pokedex a:link {
+  text-decoration: none;
+  color: #C14040;
+}
+
+.pokedex a:visited {
+  color: #C14040;
+}
+
+.pokedex a:hover {
+  color: #f0f;
+}
+
+
+.pokedex_home {
+  margin-left: 1rem;
+}
+
+.pokedex_menu {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: inline-flex;
+  margin-right: 1rem;
+}
+
+.pokedex_menu li {
+  padding: 0 0.5rem;
+}
+
+/* HOME */
+
+.global {
+  width: 90%;
+}
+
+.pokemon_list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: stretch; */
+}
+
+.pokemon_link:link {
+  text-decoration: none;
+  color: white;
+}
+
+.pokemon_link:visited {
+  color: white;
+}
+
+.pokemon_link:hover {
+  color: #f0f;
+}
+
+.pokemon_name {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.pokemon_img {
+  display: block;
+  margin: auto;
+}
+
+.pokemon_alone {
+  width: 21%;
+  background-color: #982C2C;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+/* DETAILS */
+
+.details_caracs {
+  margin-left: 3rem;
+  background-color: #AB3838;
+  border-radius: 2rem;
+  width: 71%;
+  padding: 2rem;
+}
+
+.return_link {
+  display: flex;
+  justify-content: center;
+}
+
+.return_link:link {
+  text-decoration: none;
+  color: white;
+}
+
+.return_link:visited {
+  color: white;
+}
+
+.return_link:hover {
+  color: #f0f;
+}
+
+.details_pokemon {
+  display: flex;
+  flex-direction: row;
+}
+
+.stickers {
+  display: flex;
+}
+
+.sticker {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.stats-stat {
+  padding-left: 3rem;
+}
+
+.stats-details {
+  width: 100%;
+}
+
+.stats-stat-barre {
+  padding: 0 2rem 0 60rem;
+}
+
+/* Barre Stat */
+
+.stat-container {
+  width: 100%;
+  justify-content: space-between;
+  display: inline-flex;
+  flex-basis: 100%;
+  line-height: 0rem;
+}
+
+.stat-container__unique {
+  display: inline-flex;
+  justify-content: space-between;
+  display: flex;
+  flex-basis: 100%;
+}
+
+.stat_name {
+  width: 3rem;
+}
+
+.barre__progress {
+  background-color: white;
+  height: 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.barre-container {
+  height: 1.5rem;
+  background-color: #632B2B;
+  width: 70%;
+  border-radius: 0.5rem;
+  align-self: center;
+}
+
+/* Page TYPES */
+
+.type {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.typelist {
+  width: 20%;
+  margin: 0.5rem;
+}
+
+.onetype {
+  padding: 1rem 3rem;
+  text-align: center;
+  border-radius: 0.2rem;
+}
+
+.type-title {
+  margin-left: 2rem;
+}
+
+.type_link:link {
+  text-decoration: none;
+  color: white;
+}
+
+.type_link:visited {
+  color: white;
+}
+
+.type_link:hover {
+  color: #f0f;
+}
