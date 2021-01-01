@@ -30,16 +30,6 @@ class PokemonController extends Controller
     }
 
     /**
-     * Pokemon type List
-     *
-     * @return json
-     */
-    public function test()
-    {
-        return $this->sendJsonResponse(Pokemon_type::all(), 200);
-    }
-
-    /**
      * récupération d'un pokemon par son id
      *
      * @param int $id

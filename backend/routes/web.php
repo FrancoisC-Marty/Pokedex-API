@@ -34,11 +34,3 @@ $router->get(
         'as'   => 'pokemon-details'
     ]
 );
-
-$router->get(
-    '/test',
-    [
-        'uses' => 'PokemonController@test',
-        'as'   => 'pokemon-test'
-    ]
-);
