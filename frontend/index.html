@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">    
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Pokedex</title>
+</head>
+<body>
+    <container class="global">
+        <header class="pokedex-container">
+            <nav class="pokedex">
+                <a href="#home" class="pokedex_home"><h3>Pokédex</h3></a>
+                <ul class="pokedex_menu">
+                    <a href="#list" class="pokedex_list"><li>Liste</li></a>
+                    <a href="#type" class="pokedex_types"><li>Types</li></a>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="js-container">
+
+        </div>
+
+    </container>
+
+    <!-- Template liste des Pokemon -->
+    <template id="empty-pokemon">
+        <div class="pokemon_alone">
+            <a class="pokemon_link" href="#details">
+                <img class="pokemon_img" src="#" alt="#">
+                <p class="pokemon_name"></p></a>
+            </div>
+    </template>
+
+    <!-- Template détails -->
+    <template id="empty-details">
+        <section class="details">
+            <h1>Détails de <span class="details_pokemon--name"></span></h1>
+                <div class="details_pokemon">
+                    <img class="details_pokemon--img" alt="">
+                    <div class="details_caracs">
+                        <h2 class="details_pokemon--number-name"></h2>
+                        <div class="stickers">
+                            <p class="sticker"></p>
+                        </div>
+                        <h3 class="stats">Statistiques</h3>
+
+                    </div>
+
+                </div>
+            <a class="return_link" href="<?= $router->generate('home') ?>">Revenir à la liste</a>
+        </section>
+    </template>
+
+    <!-- Template statistiques -->
+    <template id="empty-stats">
+        <div class="stat-container">
+            <p class="stat_name"></p>
+            <p class="stat_num"></p>
+            <div class="barre-container">    
+                <div class="barre__progress"></div>
+            </div>
+        </div>
+    </template>
+
+    <template>
+        <p class="type-title">Cliquez sur un type pour voir tous les Pokémon de ce type</p>
+            <section class="type">
+                <div class="typelist"><a class="type_link" href="#pokedex_types">
+                    <!-- <div class="type--"></div> -->
+                </a></div>
+            </section>
+    </template>
+    
+
+    <script src="assets/js/app.js"></script>
+
+</body>
+</html>

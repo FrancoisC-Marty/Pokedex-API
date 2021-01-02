@@ -11,8 +11,8 @@ body {
 }
 
 .pokedex-container {
-  width: 97%;
-  justify-content: center;
+  width: 94%;
+  margin: auto;
 }
 
 .pokedex {
@@ -101,6 +101,11 @@ body {
 }
 
 /* DETAILS */
+
+.details {
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
 
 .details_caracs {
   margin-left: 3rem;
@@ -211,7 +216,7 @@ body {
 }
 
 .type-title {
-  margin-left: 2rem;
+  text-align: center;
 }
 
 .type_link:link {

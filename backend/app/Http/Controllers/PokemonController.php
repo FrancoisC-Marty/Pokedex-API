@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-// Les facades sont à la racine des namespaces
+// Les facades sont dans le dossier Illuminate/Support
 use Illuminate\Support\Facades\DB;
 // On importe le model Pokemon
-use App\Models\{Pokemon,Type,Pokemon_type};
+use App\Models\{Pokemon,Type};
 
 class PokemonController extends Controller
 {
@@ -53,5 +53,29 @@ class PokemonController extends Controller
               // fonction 404 prévue par Lumen
               abort(404, "On a dit les 151 premiers !");
           }
+    }
+
+    /**
+     * récupération d'une liste de pokemon par type
+     *
+     * @param int $id
+     * @return json
+     */
+    public function byTypes($id)
+    {
+        $id = intval($id);
+
+        // On vérifie si le type demandé est bien dans la liste
+        if ($id <= DB::table('types')->max('id') && $id > 0) {
+            // On récupère la liste de tous les pokemons
+            $pokemon = Type::findByType($id);
+
+            // On retourne l'info au format json avec le status code 200
+            return $this->sendJsonResponse($pokemon, 200);
+            }
+            else {
+                // fonction 404 prévue par Lumen
+                abort(404, "On a dit les 151 premiers !");
+            }
     }
 }

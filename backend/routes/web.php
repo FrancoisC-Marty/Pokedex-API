@@ -34,3 +34,11 @@ $router->get(
         'as'   => 'pokemon-details'
     ]
 );
+
+$router->get(
+    '/type/{id}',
+    [
+        'uses' => 'PokemonController@byTypes',
+        'as'   => 'pokemon-byTypes'
+    ]
+);
