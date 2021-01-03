@@ -27,7 +27,7 @@ let pokemon = {
                     )
         }
         // S'il n'y a pas d'élément .pokemon_alone dans le DOM
-        if (!document.querySelector('.pokemon_alone')) {
+        else if (!document.querySelector('.pokemon_alone')) {
             // On clean le board
             document.querySelector('.content').innerHTML = '';
             
