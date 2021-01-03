@@ -30,6 +30,11 @@ let app = {
     bindDetailsEvent: function() {
         // on pose un écouteur sur le bouton retour
         document.querySelector('.return_link').addEventListener('click', pokemon.list);
+    },
+    // Méthode qui pose lécouteur sur la vignette type en cours
+    bindTypesEvents(pokelement) {
+        // pose de l'écouteur
+        pokelement.querySelector('.typelist').addEventListener('click', type.byType);
     }
 }
 
