@@ -5,27 +5,27 @@ let pokemon = {
         if (!document.querySelector('.pokemon_alone')) {
             // On clean le board
             document.querySelector('.content').innerHTML = '';
+            
+            let container = document.createElement('container');
+            
+            container.classList.add('pokemon_list');
+            
+            app.contentElement.appendChild(container);
+            
+            request = fetch(app.baseUrl, app.getFetchOptions);
+            
+            request.then(
+                function(response) {
+                    return response.json()
+                }
+                )
+                
+                .then(
+                    function(pokemons) {
+                        pokemons.forEach(element => pokemon.create(element));
+                    }
+                    )
         }
-
-        let container = document.createElement('container');
-
-        container.classList.add('pokemon_list');
-
-        app.contentElement.appendChild(container);
-
-        request = fetch(app.baseUrl, app.getFetchOptions);
-
-        request.then(
-            function(response) {
-                return response.json()
-            }
-        )
-
-        .then(
-            function(pokemons) {
-                pokemons.forEach(element => pokemon.create(element));
-            }
-        )
     },
     create: function(pokemon) {
         // On clone notre le contenu de notre template "empty-pokemon"

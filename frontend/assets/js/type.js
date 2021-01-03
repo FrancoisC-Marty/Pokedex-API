@@ -4,27 +4,27 @@ let type = {
         if (!document.querySelector('.type')) {
             // On clean le board
             document.querySelector('.content').innerHTML = '';
+            
+            // On clone notre template "empty-type"
+            let newType = document.getElementById('empty-type').content.cloneNode(true);
+            
+            // on place notre template dans le DOM
+            app.contentElement.appendChild(newType);
+            
+            request = fetch(app.baseUrl + 'types', app.getFetchOptions);
+            
+            request.then(
+                function(response) {
+                    return response.json()
+                }
+                )
+                
+                .then(
+                    function(types) {
+                        types.forEach(element => type.create(element));
+                    }
+                    )
         }
-
-        // On clone notre template "empty-type"
-        let newType = document.getElementById('empty-type').content.cloneNode(true);
-
-        // on place notre template dans le DOM
-        app.contentElement.appendChild(newType);
-
-        request = fetch(app.baseUrl + 'types', app.getFetchOptions);
-
-        request.then(
-            function(response) {
-                return response.json()
-            }
-        )
-
-        .then(
-            function(types) {
-                types.forEach(element => type.create(element));
-            }
-        )
     },
     create: function(currentType) {
         // On clone le template "empty-type"
