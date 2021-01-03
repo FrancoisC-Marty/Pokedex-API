@@ -35,6 +35,10 @@ let app = {
     bindTypesEvents(pokelement) {
         // pose de l'écouteur
         pokelement.querySelector('.typelist').addEventListener('click', type.byType);
+    },
+    bindPopUpEvent(pokelement) {
+        // pose de l'écouteur
+        pokelement.querySelector('.return_link').addEventListener('click', pokemon.destroy);
     }
 }
 

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Pokedex</title>
 </head>
-<body>
+<body class="body">
     <container class="global">
         <header class="pokedex-container">
             <nav class="pokedex">
@@ -40,9 +40,9 @@
             </div>
     </template>
 
-    <!-- Template détails -->
+    <!-- Template détails Modal -->
     <template id="empty-details-modal">
-        <section class="details  modal fade" tabindex="-1" role="dialog">
+        <section class="detailsmodal details modal fade" id="detailsModal" tabindex="-1" role="dialog">
             <h1>Détails de <span class="details_pokemon--name"></span></h1>
                 <div class="details_pokemon">
                     <img class="details_pokemon--img" alt="">
@@ -56,7 +56,7 @@
                     </div>
 
                 </div>
-            <a class="return_link" href="#list">Revenir à la liste</a>
+            <a class="return_link" rel="modal:close" href="#list">Revenir à la liste</a>
         </section>
     </template>
 
@@ -112,7 +112,6 @@
     <script src="assets/js/app.js"></script>
     <script src="assets/js/pokemon.js"></script>
     <script src="assets/js/type.js"></script>
-    <script src="assets/js/handler.js"></script>
 
 </body>
 </html>

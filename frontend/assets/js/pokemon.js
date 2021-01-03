@@ -45,9 +45,6 @@ let pokemon = {
         document.querySelector('.pokemon_list').appendChild(newPokemon);
     },
     details: function(evt) {
-        // on clean l'écran pour l'affichage des détails
-        document.querySelector('.content').innerHTML = '';
-
         // on cible l'element cliqué par le user
         let currentPokemon = evt.currentTarget;
         // On cible le '.pokemon_alone' le plus proche du clique (soit la vignette du pokemon cliqué)
@@ -67,11 +64,13 @@ let pokemon = {
 
         .then (
             function(currentPokemon) {
-                pokemon.detailsDisplay(currentPokemon);
+                pokemon.popUp(currentPokemon)
             }
         )
     },
     detailsDisplay: function(currentPokemon) {
+        // on clean l'écran pour l'affichage des détails
+        document.querySelector('.content').innerHTML = '';
         // on clone le template "empty-details"
         let newPokemon = document.getElementById('empty-details').content.cloneNode(true);
         // on rempli les différentes infos
@@ -120,4 +119,45 @@ let pokemon = {
         // On place notre stat dans le DOM
         document.querySelector('.stats').appendChild(newStat);
     },
+    popUp: function(currentPokemon){
+        // on clone le template "empty-details"
+        let newPokemon = document.getElementById('empty-details-modal').content.cloneNode(true);
+        // On donne une classe "Marcel" a notre section "details" pour pouvoir la detruire plus tard
+        newPokemon.querySelector('.details').classList.add('marcel');
+        // on rempli les différentes infos
+        newPokemon.querySelector('.details_pokemon--name').textContent = currentPokemon.nom;
+        newPokemon.querySelector('.details_pokemon--img').setAttribute('src', 'assets/img/' + currentPokemon.id + '.png');
+        newPokemon.querySelector('.details_pokemon--img').setAttribute('alt', currentPokemon.nom + '.png');
+        newPokemon.querySelector('.details_pokemon--number-name').textContent = '#' + currentPokemon.id + ' ' + currentPokemon.nom;
+        
+        // on appel la méthode qui pose l'écouteur sur le bouton retour
+        app.bindPopUpEvent(newPokemon);
+        // on place notre élément dans le DOM
+        app.contentElement.appendChild(newPokemon);
+        // console.log(currentPokemon.types);
+
+        // On boucle sur les infos de types et on appel la méthode qui crée les stickers
+        currentPokemon.types.forEach(element => pokemon.sticker(element));
+
+        // on appel la méthode de création de stat avec les différentes stats de notre pokemon
+        pokemon.createStat('pv', currentPokemon.pv);
+        pokemon.createStat('attaque', currentPokemon.attaque);
+        pokemon.createStat('defense', currentPokemon.defense);
+        pokemon.createStat('attaque_spe', currentPokemon.attaque_spe);
+        pokemon.createStat('defense_spe', currentPokemon.defense_spe);
+        pokemon.createStat('vitesse', currentPokemon.vitesse);
+
+        // On affiche la modal
+        $('#detailsModal').modal('show');
+    },
+    // Méthode qui detruit la modal
+    // https://stackoverflow.com/questions/23677765/bootstrap-modal-hide-is-not-working
+    destroy: function() {
+        $(".marcel").removeClass("in");
+        $(".modal-backdrop").remove();
+        $('body').removeClass('modal-open');
+        $('body').css('padding-right', '');
+        $(".marcel").hide();
+        $('.marcel').remove();
+    }
 }

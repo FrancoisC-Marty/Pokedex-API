@@ -147,6 +147,11 @@ body {
   margin-right: 20rem;
 }
 
+.detailsmodal {
+  margin-top: 5rem;
+  width: 70%;
+}
+
 .details_pokemon--img {
   width: 30%;
 }
