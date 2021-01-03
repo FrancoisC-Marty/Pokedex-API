@@ -1,6 +1,31 @@
 let pokemon = {
     // methode qui récupère les données de tous les pokemon
     list: function() {
+        // S'il n'y a pas d'élément .michel dans le DOM
+        if (!document.querySelector('.michel')) {
+            // On clean le board
+            document.querySelector('.content').innerHTML = '';
+            
+            let container = document.createElement('container');
+            
+            container.classList.add('pokemon_list');
+            
+            app.contentElement.appendChild(container);
+            
+            request = fetch(app.baseUrl, app.getFetchOptions);
+            
+            request.then(
+                function(response) {
+                    return response.json()
+                }
+                )
+                
+                .then(
+                    function(pokemons) {
+                        pokemons.forEach(element => pokemon.create(element));
+                    }
+                    )
+        }
         // S'il n'y a pas d'élément .pokemon_alone dans le DOM
         if (!document.querySelector('.pokemon_alone')) {
             // On clean le board
@@ -31,6 +56,8 @@ let pokemon = {
         // On clone notre le contenu de notre template "empty-pokemon"
         let newPokemon = document.getElementById('empty-pokemon').content.cloneNode(true);
 
+        // On donne une class "michel" pour une vérif
+        newPokemon.querySelector('.pokemon_alone').classList.add('michel')
         // On défini l'attribut source de l'image afin de récupérer l'image du pokemon courant
         newPokemon.querySelector('.pokemon_img').setAttribute('src', 'assets/img/' + pokemon.id + '.png');
         // On défini l'attribut "alt" de l'image

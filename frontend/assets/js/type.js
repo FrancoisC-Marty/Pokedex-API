@@ -30,6 +30,7 @@ let type = {
         // On clone le template "empty-type"
         let newType = document.getElementById('empty-type--indiv').content.cloneNode(true);
 
+        // On donne un id
         newType.querySelector('.typelist').dataset.id = currentType.id;
 
         // on cible la div "onetype" de notre fragment de document
@@ -44,6 +45,7 @@ let type = {
         
         //on place les écouteurs
         app.bindTypesEvents(newType);
+        app.bindMenuEvents();
         // On le place dans le DOM
         document.querySelector('.type').appendChild(newType);
     },
