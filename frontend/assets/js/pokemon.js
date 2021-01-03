@@ -67,11 +67,11 @@ let pokemon = {
 
         .then (
             function(currentPokemon) {
-                pokemon.popUp(currentPokemon);
+                pokemon.detailsDisplay(currentPokemon);
             }
         )
     },
-    popUp: function(currentPokemon) {
+    detailsDisplay: function(currentPokemon) {
         // on clone le template "empty-details"
         let newPokemon = document.getElementById('empty-details').content.cloneNode(true);
         // on rempli les différentes infos
@@ -80,20 +80,44 @@ let pokemon = {
         newPokemon.querySelector('.details_pokemon--img').setAttribute('alt', currentPokemon.nom + '.png');
         newPokemon.querySelector('.details_pokemon--number-name').textContent = '#' + currentPokemon.id + ' ' + currentPokemon.nom;
         
+        // on place notre élément dans le DOM
         app.contentElement.appendChild(newPokemon);
-        console.log(newPokemon.querySelector('.details_pokemon--name').textContent);
+        // console.log(currentPokemon.types);
 
-        currentPokemon.types.forEach(element => pokemon.sticker(element))
+        // On boucle sur les infos de types et on appel la méthode qui crée les stickers
+        currentPokemon.types.forEach(element => pokemon.sticker(element));
+
+        // on appel la méthode de création de stat avec les différentes stats de notre pokemon
+        pokemon.createStat('pv', currentPokemon.pv)
+        pokemon.createStat('attaque', currentPokemon.attaque);
+        pokemon.createStat('defense', currentPokemon.defense);
+        pokemon.createStat('attaque_spe', currentPokemon.attaque_spe);
+        pokemon.createStat('defense_spe', currentPokemon.defense_spe);
+        pokemon.createStat('vitesse', currentPokemon.vitesse);
+
+        // on appel la méthode qui pose l'écouteur sur le bouton retour
+        app.bindDetailsEvent();
+
     },
     sticker: function(type) {
         let newType = document.createElement('p');
 
         newType.textContent = type.name;
         newType.style.backgroundColor = '#' + type.color;
+        newType.classList.add('sticker');
 
         document.querySelector('.stickers').appendChild(newType);
     },
-    test: function(mot) {
-        console.log(mot);
-    }
+    createStat(statName, value) {
+        // on clone le template "empty stat"
+        let newStat = document.getElementById('empty-stat').content.cloneNode(true);
+
+        // On saisie les infos de la stat courante
+        newStat.querySelector('.stat_name').textContent = statName;
+        newStat.querySelector('.stat_num').textContent = value;
+        newStat.querySelector('.barre__progress').style.width = (value / 255) * 100 + '%';
+
+        // On place notre stat dans le DOM
+        document.querySelector('.stats').appendChild(newStat);
+    },
 }

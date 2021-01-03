@@ -17,7 +17,7 @@
     <container class="global">
         <header class="pokedex-container">
             <nav class="pokedex">
-                <a href="#home" class="pokedex_home"><p>Pokédex</p></a>
+                <a href="#home" class="pokedex_home"><h5>Pokédex</h5></a>
                 <ul class="pokedex_menu">
                     <a href="#list" class="pokedex_list"><li>Liste</li></a>
                     <a href="#type" class="pokedex_types"><li>Types</li></a>
@@ -41,7 +41,7 @@
     </template>
 
     <!-- Template détails -->
-    <template id="empty-details">
+    <template id="empty-details-modal">
         <section class="details  modal fade" tabindex="-1" role="dialog">
             <h1>Détails de <span class="details_pokemon--name"></span></h1>
                 <div class="details_pokemon">
@@ -50,17 +50,38 @@
                         <h2 class="details_pokemon--number-name"></h2>
                         <div class="stickers">
                         </div>
-                        <h3 class="stats">Statistiques</h3>
+                        <h3 class="stats-title">Statistiques</h3>
+                        <div class="stats"></div>
 
                     </div>
 
                 </div>
-            <a class="pokedex_home return_link" href="#list">Revenir à la liste</a>
+            <a class="return_link" href="#list">Revenir à la liste</a>
+        </section>
+    </template>
+
+    <!-- Template détails -->
+    <template id="empty-details">
+        <section class="details">
+            <h1>Détails de <span class="details_pokemon--name"></span></h1>
+                <div class="details_pokemon">
+                    <img class="details_pokemon--img" alt="">
+                    <div class="details_caracs">
+                        <h2 class="details_pokemon--number-name"></h2>
+                        <div class="stickers">
+                        </div>
+                        <h3 class="stats-title">Statistiques</h3>
+                        <div class="stats"></div>
+
+                    </div>
+
+                </div>
+            <a class="return_link" href="#list">Revenir à la liste</a>
         </section>
     </template>
 
     <!-- Template statistiques -->
-    <template id="empty-stats">
+    <template id="empty-stat">
         <div class="stat-container">
             <p class="stat_name"></p>
             <p class="stat_num"></p>
@@ -70,13 +91,18 @@
         </div>
     </template>
 
-    <template>
+    <!-- Template types -->
+    <template id="empty-type">
         <p class="type-title">Cliquez sur un type pour voir tous les Pokémon de ce type</p>
             <section class="type">
-                <div class="typelist"><a class="type_link" href="#pokedex_types">
-                    <!-- <div class="type--"></div> -->
-                </a></div>
             </section>
+    </template>
+
+    <!-- Template type indiv -->
+    <template id="empty-type--indiv">
+        <div class="typelist"><a class="type_link" href="#pokedex_types">
+            <div class="onetype"></div>
+        </a></div>
     </template>
     
     <!-- Scripts -->
